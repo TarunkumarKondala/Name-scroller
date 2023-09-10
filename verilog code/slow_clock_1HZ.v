@@ -1,0 +1,22 @@
+module slow_clock_1HZ(clk_in,clk_out);
+input clk_in;
+output reg clk_out;
+
+reg [28:0]period_count=0;
+
+always@(posedge clk_in)
+begin
+if(period_count!=50000000-1)
+begin
+period_count<=period_count+1;
+clk_out<=0;
+end
+else
+begin
+period_count<=0;
+clk_out<=1;
+end
+end
+
+
+endmodule
